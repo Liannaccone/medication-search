@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Search from './Search';
 import DrugConceptList from './DrugConcept_List'
+import AlternativeConceptList from './AlternativeConcept_List'
 import API from "../utils/API";
 
 class MedSearchContainer extends Component {
@@ -8,16 +9,34 @@ class MedSearchContainer extends Component {
     super(props);
 
     this.state = {
-      drugConceptGroup: [],
-      search: ''
+    	search: '',
+    	drugConceptGroup: [],
+    	alternativeConceptGroup: []
     };
 
-  }
+  };
 
   searchDrugName = query => {
   	API.search(query)
   		.then(response => this.setState({ drugConceptGroup: response.data.drugGroup.conceptGroup[1].conceptProperties}))
   		.catch(err => console.log(err));
+  };
+
+  searchSimilarDrug = query => {
+  	API.searchSimilar(query)
+  		.then(response=> this.findAlternativeDrug(response.data.relatedGroup.conceptGroup[0].conceptProperties[0].rxcui))
+  		.catch(err => console.log(err))
+  };
+
+  findAlternativeDrug = query => {
+  	API.findAlternative(query)
+  		// .then(response=> console.log(response.data))
+  		.then(response=> this.setState({alternativeConceptGroup: response.data.relatedGroup.conceptGroup[0].conceptProperties}))
+  		.catch(err => console.log(err))
+  }
+
+  handleDrugConceptClick = selectedDrugConcept => {
+  	this.searchSimilarDrug(selectedDrugConcept)
   }
 
   handleInputChange = event => {
@@ -32,6 +51,7 @@ class MedSearchContainer extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     this.searchDrugName(this.state.search);
+    this.setState({search:'', alternativeConceptGroup: []})
   };
 
   render() {
@@ -42,9 +62,15 @@ class MedSearchContainer extends Component {
 	  			handleInputChange={this.handleInputChange}
 	  			handleFormSubmit={this.handleFormSubmit}
 	  		/>
-  		{this.state.drugConceptGroup.length > 0
-  			? <DrugConceptList drugs={this.state.drugConceptGroup} />
-  			: <h3> No Results to Display </h3>}
+  		{this.state.drugConceptGroup
+  			? <DrugConceptList 
+  				drugs={this.state.drugConceptGroup} 
+  				handleDrugConceptClick={this.handleDrugConceptClick}
+  				/>
+  			: <h3> Drug does not exist </h3>}
+  		{this.state.alternativeConceptGroup
+  			? <AlternativeConceptList alternatives={this.state.alternativeConceptGroup} />
+  			: <h3> No alternatives exist </h3>}
   		</div>
   	);
 

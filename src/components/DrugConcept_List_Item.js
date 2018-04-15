@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DrugConceptListItem = ({drug}) => {
+const DrugConceptListItem = ({drug, handleDrugConceptClick}) => {
 	return(
-		<li>
-			{drug.synonym}
+		<li onClick={() => handleDrugConceptClick(drug.rxcui)} >
+			{drug.synonym ? drug.synonym : drug.name}
 		</li>
 	)
 }
