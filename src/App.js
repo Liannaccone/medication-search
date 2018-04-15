@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MedSearchContainer from './components/MedSearchContainer';
 import './App.css';
 
@@ -12,10 +12,6 @@ import './App.css';
 
 //   }
 
-//   drugSearch(term) {
-//     const baseUrl = 'https://rxnav.nlm.nih.gov/REST/drugs.json?name='
-//     return axios.get(baseUrl + term)
-//   }
 
 //   render() {
 //     return (
