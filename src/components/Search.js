@@ -9,7 +9,7 @@ const Search = props => (
 			<br />
 			<h6>Enter a medication in the search bar below. </h6>
 			<br />
-			<h6>Results will generate to the right where you can then select the appropriate dosage to find a comparable alternative </h6>
+			<h6>Results will generate to the right where you can then select the appropriate dosage to find a comparable alternative. </h6>
 			<br />
 			<form>
 			    <div className="form-group">
