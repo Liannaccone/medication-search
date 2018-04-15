@@ -56,21 +56,27 @@ class MedSearchContainer extends Component {
 
   render() {
   	return (
-  		<div>
-	  		<Search 
-	  			value={this.state.search}
-	  			handleInputChange={this.handleInputChange}
-	  			handleFormSubmit={this.handleFormSubmit}
-	  		/>
-  		{this.state.drugConceptGroup
-  			? <DrugConceptList 
-  				drugs={this.state.drugConceptGroup} 
-  				handleDrugConceptClick={this.handleDrugConceptClick}
-  				/>
-  			: <h3> Drug does not exist </h3>}
-  		{this.state.alternativeConceptGroup
-  			? <AlternativeConceptList alternatives={this.state.alternativeConceptGroup} />
-  			: <h3> No alternatives exist </h3>}
+  		<div className='container'>
+        <div>
+  	  		<Search 
+  	  			value={this.state.search}
+  	  			handleInputChange={this.handleInputChange}
+  	  			handleFormSubmit={this.handleFormSubmit}
+  	  		/>
+        </div>
+        <div>
+      		{this.state.drugConceptGroup
+      			? <DrugConceptList 
+      				drugs={this.state.drugConceptGroup} 
+      				handleDrugConceptClick={this.handleDrugConceptClick}
+      				/>
+      			: <h3> Drug does not exist </h3>}
+        </div>
+        <div>
+      		{this.state.alternativeConceptGroup
+      			? <AlternativeConceptList alternatives={this.state.alternativeConceptGroup} />
+      			: <h3> No alternatives exist </h3>}
+        </div>
   		</div>
   	);
 

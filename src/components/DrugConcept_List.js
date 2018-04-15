@@ -12,12 +12,18 @@ const DrugConceptList = (props) => {
 		)
 	});
 
-	return(
-		<ul>
-			{drugItems}
-		</ul>
-	)
-
+	return (
+		<div className=" col-md-4 panel panel-default">
+			<div className="panel-heading">
+		    	<h3 className="panel-title">Results</h3>
+		  	</div>
+		  	<div className="panel-body">
+				<ul className='list-group'>
+					{drugItems}
+				</ul>
+	  		</div>
+		</div>
+	);
 }
 
 export default DrugConceptList;

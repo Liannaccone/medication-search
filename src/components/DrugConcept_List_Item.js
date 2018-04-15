@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { Component } from "react";
 
-const DrugConceptListItem = ({drug, handleDrugConceptClick}) => {
-	return(
-		<li onClick={() => handleDrugConceptClick(drug.rxcui)} >
-			{drug.synonym ? drug.synonym : drug.name}
-		</li>
-	)
+class DrugConceptListItem extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isActive: false
+		}
+	}
+
+	toggleClass() {
+    	const currentState = this.state.isActive;
+        this.setState({ isActive: !currentState });
+    };
+
+	render() {
+		return(
+			<li onClick={() => this.props.handleDrugConceptClick(this.props.drug.rxcui)} className={this.state.isActive ? 'active list-group-item' : 'list-group-item'}>
+				{this.props.drug.synonym ? this.props.drug.synonym : this.props.drug.name}
+			</li>
+		)
+	}
 }
 
 export default DrugConceptListItem;
