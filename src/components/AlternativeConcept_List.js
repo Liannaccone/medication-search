@@ -13,7 +13,7 @@ const AlternativeConceptList = (props) => {
 
 
 	return(
-		<div className=" col-md-4 panel panel-default">
+		<div className="panel panel-default">
 			<div className="panel-heading">
 		    	<h3 className="panel-title">Suggested Alternatives</h3>
 		  	</div>

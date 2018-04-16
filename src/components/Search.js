@@ -1,15 +1,13 @@
 import React from 'react';
 
 const Search = props => (
-	<div className='col-md-4 panel panel-default'>
+	<div className='panel panel-default'>
 		<div className='panel-heading'>
-			<h3 className='panel-title'>Search</h3>
+			<h2 className='panel-title'>Search</h2>
 		</div>
 		<div className='panel-body'>
-			<br />
-			<h6>Enter a medication in the search bar below. </h6>
-			<br />
-			<h6>Results will generate to the right where you can then select the appropriate dosage to find a comparable alternative. </h6>
+			<h5>Enter a medication in the search bar below. </h5>
+			<h5>Results will generate to the right where you can then select the appropriate dosage to find a comparable alternative. </h5>
 			<br />
 			<form>
 			    <div className="form-group">
@@ -23,9 +21,7 @@ const Search = props => (
 			        id="search"
 			    	/>
 			    	<br />
-			    	<button onClick={props.handleFormSubmit} className="btn btn-primary">
-			        Search
-			    	</button>
+			    	<button onClick={props.handleFormSubmit} className="btn btn-success"><span className='glyphicon glyphicon-search'></span>    Search</button>
 		    	</div>
 			</form>
 		</div>

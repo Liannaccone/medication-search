@@ -57,14 +57,17 @@ class MedSearchContainer extends Component {
   render() {
   	return (
   		<div className='container'>
-        <div>
+        <div className='page-header text-center'>
+          <h1>Similar Medication Search</h1>
+        </div>
+        <div className='col-md-4'>
   	  		<Search 
   	  			value={this.state.search}
   	  			handleInputChange={this.handleInputChange}
   	  			handleFormSubmit={this.handleFormSubmit}
   	  		/>
         </div>
-        <div>
+        <div className='col-md-4'>
       		{this.state.drugConceptGroup
       			? <DrugConceptList 
       				drugs={this.state.drugConceptGroup} 
@@ -72,7 +75,7 @@ class MedSearchContainer extends Component {
       				/>
       			: <h3> Drug does not exist </h3>}
         </div>
-        <div>
+        <div className='col-md-4'>
       		{this.state.alternativeConceptGroup
       			? <AlternativeConceptList alternatives={this.state.alternativeConceptGroup} />
       			: <h3> No alternatives exist </h3>}
